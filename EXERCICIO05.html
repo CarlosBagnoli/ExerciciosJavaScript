@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Custo para Assentar Piso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 100px;
+        }
+        button {
+            padding: 10px 20px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Custo para Assentar Piso</h1>
+    <p>Insira as dimensões do cômodo:</p>
+    <input type="number" id="comprimento" placeholder="Comprimento (m)" required>
+    <input type="number" id="largura" placeholder="Largura (m)" required>
+    <button onclick="calcularCusto()">Calcular Custo</button>
+    <div id="result"></div>
+
+    <script>
+        function calcularCusto() {
+            const comprimento = parseFloat(document.getElementById('comprimento').value);
+            const largura = parseFloat(document.getElementById('largura').value);
+            const precoPorM2 = 36.00;
+            const area = comprimento * largura;
+            const custoTotal = area * precoPorM2;
+            document.getElementById('result').innerText = `Custo total: R$ ${custoTotal.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

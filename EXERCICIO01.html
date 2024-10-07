@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitura de N Números Inteiros</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+input {
+    padding: 10px;
+    width: 180px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#resultados {
+    margin-top: 20px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+    </style>
+    <header>
+        <h1>Leitura de N Números Inteiros</h1>
+    </header>
+
+    <div class="container">
+        <input type="number" id="numero" placeholder="Digite um número" required>
+        <button onclick="adicionarNumero()">Adicionar Número</button>
+        <button onclick="calcular()">Calcular Resultados</button>
+    </div>
+
+    <div id="resultados"></div>
+
+    <script>
+        const numeros = [];
+
+        function adicionarNumero() {
+            const numero = parseInt(document.getElementById('numero').value);
+            if (!isNaN(numero)) {
+                numeros.push(numero);
+                document.getElementById('numero').value = '';
+            } else {
+                alert('Por favor, insira um número válido.');
+            }
+        }
+
+        function calcular() {
+            if (numeros.length === 0) {
+                alert('Nenhum número foi inserido.');
+                return;
+            }
+
+            const soma = numeros.reduce((acc, num) => acc + num, 0);
+            const media = soma / numeros.length;
+            const pares = numeros.filter(num => num % 2 === 0).length;
+            const impares = numeros.length - pares;
+
+            const resultadosDiv = document.getElementById('resultados');
+            resultadosDiv.innerHTML = `
+                <h2>Resultados:</h2>
+                <p>Soma: ${soma}</p>
+                <p>Média: ${media.toFixed(2)}</p>
+                <p>Números pares: ${pares}</p>
+                <p>Números ímpares: ${impares}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

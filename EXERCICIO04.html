@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Gasto de Combustível</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 150px;
+        }
+        button {
+            padding: 10px 20px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Gasto de Combustível</h1>
+    <p>Insira a quilometragem percorrida e o valor do combustível:</p>
+    <input type="number" id="km" placeholder="Quilometragem (km)" required>
+    <input type="number" id="valorCombustivel" placeholder="Valor do Combustível (R$)" required>
+    <button onclick="calcularGasto()">Calcular Gasto</button>
+    <div id="result"></div>
+
+    <script>
+        function calcularGasto() {
+            const km = parseFloat(document.getElementById('km').value);
+            const valorCombustivel = parseFloat(document.getElementById('valorCombustivel').value);
+            const consumo = 8;
+            const litrosNecessarios = km / consumo;
+            const gastoTotal = litrosNecessarios * valorCombustivel;
+            document.getElementById('result').innerText = `Gasto total: R$ ${gastoTotal.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

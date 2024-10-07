@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Forças</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 150px;
+        }
+        button {
+            padding: 10px 20px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cálculo de Forças</h1>
+    <h2>Situação 1: Força Resultante</h2>
+    <input type="number" id="massa" placeholder="Massa (kg)" required>
+    <input type="number" id="acel1" placeholder="Aceleração 1 (m/s²)" required>
+    <input type="number" id="acel2" placeholder="Aceleração 2 (m/s²)" required>
+    <button onclick="calcularForcaResultante()">Calcular Força Resultante</button>
+    <div id="resultForca"></div>
+
+    <h2>Situação 2: Força de Ação e Reação</h2>
+    <input type="number" id="massa1" placeholder="Massa Objeto 1 (kg)" required>
+    <input type="number" id="massa2" placeholder="Massa Objeto 2 (kg)" required>
+    <input type="number" id="acelObj1" placeholder="Aceleração Objeto 1 (m/s²)" required>
+    <input type="number" id="acelObj2" placeholder="Aceleração Objeto 2 (m/s²)" required>
+    <button onclick="calcularForcaAcaoReacao()">Calcular Força de Ação/Reação</button>
+    <div id="resultAcaoReacao"></div>
+
+    <script>
+        function calcularForcaResultante() {
+            const massa = parseFloat(document.getElementById('massa').value);
+            const acel1 = parseFloat(document.getElementById('acel1').value);
+            const acel2 = parseFloat(document.getElementById('acel2').value);
+            const aResultante = acel1 - acel2;
+            const forcaResultante = massa * aResultante;
+            document.getElementById('resultForca').innerText = `Força resultante: ${forcaResultante.toFixed(2)} N`;
+        }
+
+        function calcularForcaAcaoReacao() {
+            const massa1 = parseFloat(document.getElementById('massa1').value);
+            const massa2 = parseFloat(document.getElementById('massa2').value);
+            const acelObj1 = parseFloat(document.getElementById('acelObj1').value);
+            const acelObj2 = parseFloat(document.getElementById('acelObj2').value);
+            const forcaObj1 = massa1 * acelObj1;
+            const forcaObj2 = massa2 * acelObj2;
+            document.getElementById('resultAcaoReacao').innerText = `Força de ação/reação: ${forcaObj1.toFixed(2)} N (mesma magnitude, sentidos opostos)`;
+        }
+    </script>
+</body>
+</html>

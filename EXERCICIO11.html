@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Composição de Metal e Ametal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 180px;
+        }
+        button {
+            padding: 10px 20px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Composição de Metal e Ametal</h1>
+
+    <input type="number" id="percentMetal" placeholder="Percentual de metal (%)" required>
+    <input type="number" id="percentAmetal" placeholder="Percentual de ametal (%)" required>
+    <button onclick="calcularComposicao()">Calcular Composição</button>
+
+    <div id="result"></div>
+
+    <script>
+        function calcularComposicao() {
+            const metal = parseFloat(document.getElementById('percentMetal').value);
+            const ametal = parseFloat(document.getElementById('percentAmetal').value);
+
+            if (isNaN(metal) || isNaN(ametal) || metal < 0 || ametal < 0 || metal + ametal !== 100) {
+                document.getElementById('result').innerText = "Por favor, insira valores válidos que somem 100%.";
+                return;
+            }
+
+            if (metal > 50) {
+                document.getElementById('result').innerText = "A liga é predominantemente metálica.";
+            } else if (ametal > 50) {
+                document.getElementById('result').innerText = "A liga é predominantemente ametálica.";
+            } else {
+                document.getElementById('result').innerText = "A liga tem composição equilibrada.";
+            }
+        }
+    </script>
+</body>
+</html>
